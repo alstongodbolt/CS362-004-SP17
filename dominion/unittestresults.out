@@ -1,0 +1,89 @@
+“Result for running dom tests:”
+“unittest1.c:”
+Testing kingdomCards():
+This test is to test the correct implementation of pointer creation
+k not created
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+k created
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+All tests passed! 
+File 'dominion.c'
+Lines executed:2.30% of 564
+Creating 'dominion.c.gcov'
+
+“unittest2.c:”
+handCard():
+Testing to make sure a player is returned, and its not null
+currentPlayer equals 0, failed
+File 'dominion.c'
+Lines executed:16.67% of 564
+Creating 'dominion.c.gcov'
+
+“unittest3.c”
+Hello, World!
+Testing correctness of initializeGame():
+Testing if G memory has been reset
+test failed 
+testing to see if game initializes
+test passed
+tested passedFile 'dominion.c'
+Lines executed:15.78% of 564
+Creating 'dominion.c.gcov'
+
+“unittest4.c”
+Hello, World!
+Testing supplyCount():
+-1-1 is incorrect“cardtest1.c”
+Testing card: SMITHY
+testing if drawCard matches what should be in players in players hand
+Test Failed
+Testing discard function
+0
+Testing discard function
+0
+File 'dominion.c'
+Lines executed:23.05% of 564
+Creating 'dominion.c.gcov'
+
+“cardtest2.c”
+Testing card: Adventurer
+printing cardDrawn 0File 'dominion.c'
+Lines executed:18.97% of 564
+Creating 'dominion.c.gcov'
+
+“cardtest3.c”
+Testing card: Council_room
+drawCard worked correctly
+File 'dominion.c'
+Lines executed:17.20% of 564
+Creating 'dominion.c.gcov'
+
+“cardtest4.c”
+Testing card: great_hall
+Testing drawCard function
+drawCard test failedTesting actions
+Actions = 1, expected = 1
+Test discardCard function
+DiscardCard = 0, expected = 1
+File 'dominion.c'
+Lines executed:16.84% of 564
+Creating 'dominion.c.gcov'
+
