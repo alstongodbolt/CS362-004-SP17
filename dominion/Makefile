@@ -2,7 +2,7 @@ CFLAGS = -Wall -fpic -coverage -lm
 
 default: unittestresults.out
 
-unittestresults.out: unittest1.c unittest2.c unittest3.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.c rngs.c
+unittestresults.out: unittest1.c unittest2.c unittest3.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c randomtestcard1.c randomtestcard2.c randomtestadventurer.c dominion.c rngs.c
 	echo “Result for running dom tests:” > unittestresults.out
 	
 	echo “unittest1.c:” >> unittestresults.out
@@ -45,8 +45,23 @@ unittestresults.out: unittest1.c unittest2.c unittest3.c cardtest1.c cardtest2.c
 	cardtest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
+	echo “randomtestcard1.c” >> unittestresults.out
+	gcc -o randomtestcard1 randomtestcard1.c dominion.c rngs.c $(CFLAGS)
+	randomtestcard1 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
+	echo “randomtestcard2.c” >> unittestresults.out
+	gcc -o randomtestcard2 randomtestcard1.c dominion.c rngs.c $(CFLAGS)
+	randomtestcard2 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
+	echo “randomtestadventurer.c” >> unittestresults.out
+	gcc -o randomtestadventurer randomtestadventurer.c dominion.c rngs.c $(CFLAGS)
+	randomtestadventurer >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
 clean:
 	rm tests.out
 
 cleanall:
-	rm tests.out unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 *.gcda *.gcno *.gcov
+	rm tests.out unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestcard1 randomtestcard2 randomtestadventurer.c *.gcda *.gcno *.gcov
