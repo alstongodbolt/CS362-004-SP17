@@ -1,57 +1,50 @@
-// Random runs on a second card
-
-
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
 #include "dominion.h"
+#include "dominion_helpers.h"
+#include <string.h>
+#include <stdio.h>
+#include <assert.h>
 #include "rngs.h"
-#include <time.h>
+#include <stdlib.h>
+#include <math.h>
 
-#define TOTAL_TESTS 1000
+int testcouncil_room(struct gameState *post, int p){
+    int i, r;
+	struct gameState pre;
+	memcpy(&pre, post, sizeof(struct gameState));
+    int currentPlayer = whoseTurn(post);
 
-int main(){
-
-	// Used from test draw examples
-	int i, seed, p, discardCount, handCount, position;
-	int badPlayers = 0;
- 	int k[10] = {adventurer, council_room, feast, gardens, mine,
-	       remodel, smithy, village, baron, great_hall};
-
-	struct gameState G;
-	srand(time(NULL));
-
-	printf("Start the test for village\n");
-
-	for (i = 0; i < TOTAL_TESTS; i++)
+	//r = council_room1(&pre, p);
+	for(i = 1; i < 4; i++){
+		drawCard(p, &pre);
+	}
+	pre.numBuys++;
+	/*for(i = 0; i < pre.numPlayers; i++)
+	{
+		if( i == whoseTurn(&pre))
 		{
-			seed = rand();
-			p = (rand() % MAX_PLAYERS);
-			handCount = (rand() % MAX_DECK);
-			discardCount = (rand() % MAX_DECK);
-			handCount = (rand() % MAX_HAND);
-			position = (rand() % MAX_HAND); // pick a random position in
-
-			initializeGame(p, k, seed, &G);
-
-			G.hand[0][position] = village;
-
-			playCard(position, 1, 1, 1, &G);
-			shuffle(p, &G);
-			supplyCount(2, &G);
-		//	printf("Position: %d\n", p);
-			if(p < 2){
-				printf("Need more players!");
-				badPlayers++;
-			}
-			printf("Position: %d\n", position);
-			printf("handCount: %d\n", handCount);
-			printf("Discard: %d\n", discardCount);
-
-
+			drawCard(p, &pre);
 		}
-
-	printf("Test Completed\n");
-	printf("Unsupported players: %d\n", badPlayers);
-
+	}*/
+    return 0;
+}
+int main()
+{
+	SelectStream(2);
+	int currentPlayer;
+	PutSeed(3);
+	int n, i, p;
+	struct gameState G;
+    for(n = 0; n < 1000; n++)
+	{
+		for(i = 0; i < sizeof(struct gameState); i++)
+		{
+			((char*)&G)[i] = floor(Random() * 256);
+		}
+        p = floor(Random() * 2);
+        G.deckCount[p] = floor(Random() * MAX_DECK);
+        G.discardCount[p] = floor(Random() * MAX_DECK);
+        G.handCount[p] = floor(Random() * MAX_HAND);
+		testcouncil_room(&G, p);
+	}
+    return 0;
 }
