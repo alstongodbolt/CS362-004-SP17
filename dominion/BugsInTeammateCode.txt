@@ -1,0 +1,12 @@
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000406b98 in adventurers (drawntreasure=0, state=0x7fffffff7850, currentPlayer=1, temphand=0xffffffffffff7850, cardDrawn=12) at dominion.c:1376
+1376	          temphand[z]=cardDrawn;
+
+#0  0x0000000000406b98 in adventurers (drawntreasure=0, state=0x7fffffff7850, currentPlayer=1, temphand=0xffffffffffff7850, cardDrawn=12) at dominion.c:1376
+#1  0x00000000004041bf in cardEffect (card=7, choice1=-1, choice2=-1, choice3=-1, state=0x7fffffff7850, handPos=1, bonus=0x7fffffff77f8) at dominion.c:688
+#2  0x00000000004028f1 in playCard (handPos=1, choice1=-1, choice2=-1, choice3=-1, state=0x7fffffff7850) at dominion.c:265
+#3  0x0000000000401832 in main (argc=2, argv=0x7fffffffe028) at playdom.c:88
+
+occurs when i enter six numbers
+
+council function does not draw four cards, it draws three
