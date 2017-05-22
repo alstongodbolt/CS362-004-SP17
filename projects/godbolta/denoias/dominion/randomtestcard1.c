@@ -14,7 +14,7 @@ int testSmithy(struct gameState *post, int p) {
     int currentPlayer = whoseTurn(&pre);
     printf("Current player = %d", currentPlayer);
     int r, i, t;
-    //r = smithy1 (&pre, p);
+    //r = smith (&pre, p);
     for (i = 1; i < 3; i++) {
          drawCard(p, &pre);
         
